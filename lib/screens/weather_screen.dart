@@ -24,27 +24,41 @@ class _WeatherScreenState extends State<WeatherScreen> {
         future: futureWeather,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    snapshot.data!.name,
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  Text(
-                    snapshot.data!.temp.toString(),
-                    style: GoogleFonts.vidaloka(textStyle: Theme.of(context).textTheme.displayMedium),
-                  ),
-                  Text(
-                    snapshot.data!.windSpeed.toString(),
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                  Text(
-                    snapshot.data!.windDirection.toString(),
-                    style: Theme.of(context).textTheme.titleLarge,
-                  ),
-                ]);
+            // TODO There are probably a more dynamic way to achieve this
+            return SizedBox(
+                height: 180,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(
+                        snapshot.data!.name,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      Text(
+                        "${snapshot.data!.temp} °",
+                        style: GoogleFonts.vidaloka(
+                            textStyle:
+                                Theme.of(context).textTheme.displayMedium,
+                            color: Theme.of(context).primaryColor),
+                      ),
+                      SizedBox(
+                          width: 180,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "${snapshot.data!.windSpeed} m/s",
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                              Text(
+                                "${snapshot.data!.windDirection} °",
+                                style: Theme.of(context).textTheme.titleLarge,
+                              ),
+                            ],
+                          ))
+                    ]));
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }
