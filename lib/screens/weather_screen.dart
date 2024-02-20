@@ -1,16 +1,43 @@
-import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 
-import '../main.dart';
+import '../network/Weather.dart';
 
-class WeatherScreen extends StatelessWidget {
+class WeatherScreen extends StatefulWidget {
+  @override
+  State<WeatherScreen> createState() => _WeatherScreenState();
+}
+
+class _WeatherScreenState extends State<WeatherScreen> {
+  late Future<Weather> futureWeather;
+
+  @override
+  void initState() {
+    super.initState();
+    futureWeather = fetchWeather();
+  }
+
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<AppState>();
-
     return Center(
-      child: Text('Weather screen'),
+      child: FutureBuilder<Weather>(
+        future: futureWeather,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(snapshot.data!.name),
+                  Text(snapshot.data!.temp.toString()),
+                  Text(snapshot.data!.windSpeed.toString()),
+                  Text(snapshot.data!.windDirection.toString()),
+                ]);
+          } else if (snapshot.hasError) {
+            return Text('${snapshot.error}');
+          }
+          return const CircularProgressIndicator();
+        },
+      ),
     );
   }
 }
