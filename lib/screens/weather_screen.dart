@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../network/Weather.dart';
 
@@ -27,10 +28,22 @@ class _WeatherScreenState extends State<WeatherScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(snapshot.data!.name),
-                  Text(snapshot.data!.temp.toString()),
-                  Text(snapshot.data!.windSpeed.toString()),
-                  Text(snapshot.data!.windDirection.toString()),
+                  Text(
+                    snapshot.data!.name,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  Text(
+                    snapshot.data!.temp.toString(),
+                    style: GoogleFonts.vidaloka(textStyle: Theme.of(context).textTheme.displayMedium),
+                  ),
+                  Text(
+                    snapshot.data!.windSpeed.toString(),
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  Text(
+                    snapshot.data!.windDirection.toString(),
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
                 ]);
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
