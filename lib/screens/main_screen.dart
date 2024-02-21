@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lab/screens/weather_screen.dart';
 
-import 'coffee_screen.dart';
+import 'coffee_list_screen.dart';
 
 class MainScreen extends StatefulWidget {
   @override

@@ -13,6 +13,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (context) => AppState(),
+      // Note this make it look Material on both iOS and Android
+      // We could also make in a CupertinoApp
       child: MaterialApp(
         title: 'Flutter Lab',
         theme: ThemeData(
