@@ -33,15 +33,20 @@ class _CoffeeScreenState extends State<CoffeeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: coffeeList.isNotEmpty
-            ? ListView.builder(
-                padding: const EdgeInsets.all(spaces.normal),
-                itemCount: coffeeList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return CoffeeItem(coffee: coffeeList[index]);
-                })
-            : CircularProgressIndicator());
+    return LayoutBuilder(builder: (context, constraints) {
+      return Scaffold(
+        appBar: AppBar(title: Text("Coffee")),
+        body: Center(
+            child: coffeeList.isNotEmpty
+                ? ListView.builder(
+                    padding: const EdgeInsets.all(spaces.normal),
+                    itemCount: coffeeList.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return CoffeeItem(coffee: coffeeList[index]);
+                    })
+                : CircularProgressIndicator()),
+      );
+    });
   }
 }
 
@@ -53,29 +58,40 @@ class CoffeeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(bottom: spaces.small),
-        padding: EdgeInsets.all(spaces.normal),
-        color: Theme.of(context).colorScheme.surface,
-        child: Row(
-          children: [
-            Padding(
-              padding: EdgeInsets.only(right: spaces.normal),
-              child: Icon(
-                Icons.coffee_outlined,
-                color: Theme.of(context).colorScheme.onSurfaceVariant,
-                size: 32.0,
-              ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(coffee.name, style: Theme.of(context).textTheme.bodyLarge),
-                Text("${coffee.roaster}, ${coffee.origin}",
-                    style: Theme.of(context).textTheme.bodyMedium!.apply(
-                        color: Theme.of(context).colorScheme.onSurfaceVariant)),
-              ],
-            )
-          ],
-        ));
+        margin: EdgeInsets.only(bottom: spaces.normal),
+        child: InkWell(
+            onTap: () {
+              print("Touch: ${coffee.name}");
+            }, // Handle your callback
+            child: Ink(
+                padding: EdgeInsets.all(spaces.normal),
+                color: Theme.of(context).colorScheme.surfaceVariant,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(right: spaces.normal),
+                      child: Icon(
+                        Icons.coffee_outlined,
+                        color: Theme.of(context).colorScheme.onSurfaceVariant,
+                        size: 26.0,
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(coffee.name,
+                            style: Theme.of(context).textTheme.bodyLarge),
+                        Text("${coffee.roaster}, ${coffee.origin}",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .apply(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurfaceVariant)),
+                      ],
+                    )
+                  ],
+                ))));
   }
 }
