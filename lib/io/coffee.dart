@@ -12,7 +12,6 @@ class Coffee {
   });
 
   factory Coffee.fromJson(Map<String, dynamic> json) {
-
     String name = json['name'];
     String roaster = json['roaster'];
     String origin = json['origin'];

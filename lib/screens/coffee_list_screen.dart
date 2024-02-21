@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_lab/screens/coffe_details_screen.dart';
 
 import '../styles/spaces.dart' as spaces;
 
@@ -61,8 +62,12 @@ class CoffeeItem extends StatelessWidget {
         margin: EdgeInsets.only(bottom: spaces.normal),
         child: InkWell(
             onTap: () {
-              print("Touch: ${coffee.name}");
-            }, // Handle your callback
+              Navigator.push(
+                  context,
+                  // TODO No bottom navigation bar?
+                  MaterialPageRoute(
+                      builder: (context) => CoffeeDetailsScreen(coffee: coffee)));
+            },
             child: Ink(
                 padding: EdgeInsets.all(spaces.normal),
                 color: Theme.of(context).colorScheme.surfaceVariant,
