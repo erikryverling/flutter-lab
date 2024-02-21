@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lab/screens/main_screen.dart';
+import 'package:flutter_lab/styles/colors.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -19,7 +20,13 @@ class App extends StatelessWidget {
         title: 'Flutter Lab',
         theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: Color(0xFF4F99AD)),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Color(seedColor), brightness: Brightness.light),
+        ),
+        darkTheme: ThemeData(
+          useMaterial3: true,
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Color(seedColor), brightness: Brightness.dark),
         ),
         home: MainScreen(),
       ),
@@ -27,5 +34,4 @@ class App extends StatelessWidget {
   }
 }
 
-class AppState extends ChangeNotifier {
-}
+class AppState extends ChangeNotifier {}

@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../network/weather.dart';
 
+const double boxSize = 180;
+
 class WeatherScreen extends StatefulWidget {
   @override
   State<WeatherScreen> createState() => _WeatherScreenState();
@@ -26,7 +28,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           if (snapshot.hasData) {
             // TODO There are probably a more dynamic way to achieve this
             return SizedBox(
-                height: 180,
+                height: boxSize,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -40,10 +42,10 @@ class _WeatherScreenState extends State<WeatherScreen> {
                         style: GoogleFonts.vidaloka(
                             textStyle:
                                 Theme.of(context).textTheme.displayMedium,
-                            color: Theme.of(context).primaryColor),
+                            color: Theme.of(context).colorScheme.primary),
                       ),
                       SizedBox(
-                          width: 180,
+                          width: boxSize,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.center,

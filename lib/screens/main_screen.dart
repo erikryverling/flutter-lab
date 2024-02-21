@@ -45,7 +45,7 @@ class _MainScreenState extends State<MainScreen> {
         ),
         body: Expanded(
           child: Container(
-            color: Theme.of(context).colorScheme.surface,
+            color: Theme.of(context).colorScheme.background,
             child: page,
           ),
         ),
