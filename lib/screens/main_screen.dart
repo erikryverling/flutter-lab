@@ -28,11 +28,13 @@ class _MainScreenState extends State<MainScreen> {
         bottomNavigationBar: NavigationBar(
           destinations: [
             NavigationDestination(
-              icon: Icon(Icons.coffee),
+              selectedIcon: Icon(Icons.coffee),
+              icon: Icon(Icons.coffee_outlined),
               label: 'Coffee',
             ),
             NavigationDestination(
-              icon: Icon(Icons.sunny),
+              selectedIcon: Icon(Icons.wb_cloudy),
+              icon: Icon(Icons.wb_cloudy_outlined),
               label: 'Weather',
             ),
           ],
