@@ -2,18 +2,17 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_lab/screens/coffe_details_screen.dart';
 
 import '../styles/spaces.dart' as spaces;
 
 import '../io/coffee.dart';
 
-class CoffeeScreen extends StatefulWidget {
+class CoffeeListScreen extends StatefulWidget {
   @override
-  State<CoffeeScreen> createState() => _CoffeeScreenState();
+  State<CoffeeListScreen> createState() => _CoffeeListScreenState();
 }
 
-class _CoffeeScreenState extends State<CoffeeScreen> {
+class _CoffeeListScreenState extends State<CoffeeListScreen> {
   late List<Coffee> coffeeList;
 
   Future<void> loadJsonAsset() async {
@@ -62,11 +61,8 @@ class CoffeeItem extends StatelessWidget {
         margin: EdgeInsets.only(bottom: spaces.normal),
         child: InkWell(
             onTap: () {
-              Navigator.push(
-                  context,
-                  // TODO No bottom navigation bar?
-                  MaterialPageRoute(
-                      builder: (context) => CoffeeDetailsScreen(coffee: coffee)));
+              Navigator.pushNamed(context, "CoffeeDetailsScreen",
+                  arguments: coffee);
             },
             child: Ink(
                 padding: EdgeInsets.all(spaces.normal),
