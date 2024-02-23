@@ -20,7 +20,7 @@ class _MainScreenState extends State<MainScreen> {
       case 1:
         page = WeatherScreen();
       default:
-        throw UnimplementedError('no widget for $selectedIndex');
+        throw UnimplementedError('No screen for $selectedIndex');
     }
 
     return LayoutBuilder(builder: (context, constraints) {

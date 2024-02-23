@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../io/coffee.dart';
-
 import '../styles/spaces.dart' as spaces;
 
 class CoffeeDetailsScreen extends StatelessWidget {
-  final Coffee coffee;
-
   const CoffeeDetailsScreen({Key? key, required this.coffee}) : super(key: key);
+
+  final Coffee coffee;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +24,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
                       padding: EdgeInsets.only(bottom: spaces.normal),
                       child: RichText(
                         text: TextSpan(
-                          text: "Origin: ",
+                          text: 'Origin: ',
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge!
@@ -42,7 +41,7 @@ class CoffeeDetailsScreen extends StatelessWidget {
                       padding: EdgeInsets.only(bottom: spaces.normal),
                       child: RichText(
                         text: TextSpan(
-                          text: "Roaster: ",
+                          text: 'Roaster: ',
                           style: Theme.of(context)
                               .textTheme
                               .bodyLarge!
@@ -55,10 +54,9 @@ class CoffeeDetailsScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Spacer(),
                     RichText(
                       text: TextSpan(
-                        text: "Region: ",
+                        text: 'Region: ',
                         style: Theme.of(context)
                             .textTheme
                             .bodyLarge!

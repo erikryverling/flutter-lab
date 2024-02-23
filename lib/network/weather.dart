@@ -1,7 +1,8 @@
 import 'dart:convert';
 
-import '../secrets/secrets.dart';
 import 'package:http/http.dart' as http;
+
+import '../secrets/secrets.dart';
 
 class Weather {
   final String name;
@@ -38,6 +39,6 @@ Future<Weather> fetchWeather() async {
   if (response.statusCode == 200) {
     return Weather.fromJson(jsonDecode(response.body) as Map<String, dynamic>);
   } else {
-    throw Exception('Failed to load album');
+    throw Exception('Failed to fetch weather');
   }
 }

@@ -3,9 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../styles/spaces.dart' as spaces;
-
 import '../io/coffee.dart';
+import '../styles/spaces.dart' as spaces;
 
 class CoffeeListScreen extends StatefulWidget {
   @override
@@ -15,7 +14,7 @@ class CoffeeListScreen extends StatefulWidget {
 class _CoffeeListScreenState extends State<CoffeeListScreen> {
   late List<Coffee> coffeeList;
 
-  Future<void> loadJsonAsset() async {
+  Future<void> loadJsonFile() async {
     final String jsonString = await rootBundle.loadString('assets/coffee.json');
     final List coffeeListJson = jsonDecode(jsonString)['coffee'];
 
@@ -28,7 +27,7 @@ class _CoffeeListScreenState extends State<CoffeeListScreen> {
   @override
   void initState() {
     super.initState();
-    loadJsonAsset();
+    loadJsonFile();
   }
 
   @override
@@ -51,9 +50,9 @@ class _CoffeeListScreenState extends State<CoffeeListScreen> {
 }
 
 class CoffeeItem extends StatelessWidget {
-  final Coffee coffee;
-
   const CoffeeItem({Key? key, required this.coffee}) : super(key: key);
+
+  final Coffee coffee;
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +81,7 @@ class CoffeeItem extends StatelessWidget {
                       children: [
                         Text(coffee.name,
                             style: Theme.of(context).textTheme.bodyLarge),
-                        Text("${coffee.roaster}, ${coffee.origin}",
+                        Text('${coffee.roaster}, ${coffee.origin}',
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyMedium!
