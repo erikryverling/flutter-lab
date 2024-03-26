@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_lab/screens/weather_screen.dart';
 
-import 'coffee_screen.dart';
+import 'coffees_screen.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = CoffeeScreen();
+        page = CoffeesScreen();
       case 1:
         page = WeatherScreen();
       default:
@@ -30,7 +30,7 @@ class _MainScreenState extends State<MainScreen> {
             NavigationDestination(
               selectedIcon: Icon(Icons.coffee),
               icon: Icon(Icons.coffee_outlined),
-              label: 'Coffee',
+              label: 'Coffees',
             ),
             NavigationDestination(
               selectedIcon: Icon(Icons.wb_cloudy),

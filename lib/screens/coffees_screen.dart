@@ -4,7 +4,7 @@ import '../io/coffee.dart';
 import 'coffee_details_screen.dart';
 import 'coffee_list_screen.dart';
 
-class CoffeeScreen extends StatelessWidget {
+class CoffeesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {

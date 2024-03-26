@@ -15,8 +15,9 @@ class _CoffeeListScreenState extends State<CoffeeListScreen> {
   late List<Coffee> coffeeList;
 
   Future<void> loadJsonFile() async {
-    final String jsonString = await rootBundle.loadString('assets/coffee.json');
-    final List coffeeListJson = jsonDecode(jsonString)['coffee'];
+    final String jsonString =
+        await rootBundle.loadString('assets/coffees.json');
+    final List coffeeListJson = jsonDecode(jsonString)['coffees'];
 
     setState(() {
       coffeeList =
