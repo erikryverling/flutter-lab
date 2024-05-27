@@ -1,3 +1,5 @@
 #!/bin/sh
 flutter upgrade
 flutter pub upgrade
+cd ios
+pod install
